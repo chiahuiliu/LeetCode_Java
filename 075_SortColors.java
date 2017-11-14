@@ -9,7 +9,7 @@ Note:
 You are not suppose to use the library's sort function for this problem.
 
 ***/
-
+// Solution 1.
 class Solution {
     public void sortColors(int[] nums) {
 
@@ -27,5 +27,27 @@ class Solution {
             nums[min_index] = nums[i];
             nums[i] = min_temp;
         }
+    }
+}
+
+// Soulution 2.
+class Solution {
+    public void sortColors(int[] nums) {
+
+        if(nums.length == 0) return;
+        
+        int i = 0;
+        int k = nums.length -1;
+        for (int j = 0; j <= k; j++) {
+            while(nums[j] == 2 && j < k) swap(nums, j, k--);
+            while(nums[j] == 0 && j > i) swap(nums, j, i++);
+        }
+       
+    }
+    
+    public static void swap(int[] nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
     }
 }
